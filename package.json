@@ -10,7 +10,7 @@
     "node": "0.12.7"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "node server.js & ./node_modules/.bin/mocha --bail test/ServerSpec.js; pkill -n node;"
   },
   "dependencies": {

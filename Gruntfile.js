@@ -23,13 +23,18 @@ module.exports = function(grunt) {
     concat: {
       foo: {
         files: {
-          'public/dist/lib.js': ['public/lib/backbone.js', 'public/lib/handlebars.js',
-              'public/lib/jquery.js', 'public/lib/underscore.js'],
+          'public/dist/client.js': ['public/client/app.js', 'public/client/link.js', 'public/client/links.js',
+              'public/client/linkView.js', 'public/client/linksView.js', 'public/client/createLinkView.js',
+              'public/client/router.js']
         },
       },
     },
 
     uglify: {
+      target: {
+        src: 'public/dist/client.js',
+        dest: 'public/dist/client.min.js'
+      }
     },
 
     jshint: {
@@ -47,6 +52,10 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+      minify: {
+        src: 'public/style.css',
+        dest: 'public/dist/style.min.css'
+      }
     },
 
     watch: {
@@ -99,7 +108,6 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
 
   grunt.registerTask('default', [
-    'concat'
   ]);
 
   grunt.registerTask('test', [
@@ -107,15 +115,9 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    // concat: {
-    //   foo: {
-    //     files: {
-    //       'public/dist/lib.js': ['public/lib/backbone.js', 'public/lib/handlebars.js',
-    //           'public/lib/jquery.js', 'public/lib/underscore.js'],
-    //     },
-    //   },
-    // },
-    // 'uglify'
+    'concat',
+    'uglify',
+    'cssmin'
   ]);
 
   grunt.registerTask('upload', function(n) {
