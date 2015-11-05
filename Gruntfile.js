@@ -20,6 +20,15 @@ module.exports = function(grunt) {
       }
     },
 
+    concat: {
+      foo: {
+        files: {
+          'public/dist/lib.js': ['public/lib/backbone.js', 'public/lib/handlebars.js',
+              'public/lib/jquery.js', 'public/lib/underscore.js'],
+        },
+      },
+    },
+
     uglify: {
     },
 
@@ -89,11 +98,24 @@ module.exports = function(grunt) {
   // Main grunt tasks
   ////////////////////////////////////////////////////
 
+  grunt.registerTask('default', [
+    'concat'
+  ]);
+
   grunt.registerTask('test', [
     'mochaTest'
   ]);
 
   grunt.registerTask('build', [
+    // concat: {
+    //   foo: {
+    //     files: {
+    //       'public/dist/lib.js': ['public/lib/backbone.js', 'public/lib/handlebars.js',
+    //           'public/lib/jquery.js', 'public/lib/underscore.js'],
+    //     },
+    //   },
+    // },
+    // 'uglify'
   ]);
 
   grunt.registerTask('upload', function(n) {
