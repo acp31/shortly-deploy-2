@@ -119,6 +119,7 @@ module.exports = function(grunt) {
     'jshint',
     'mochaTest',
     'concat',
+    'uglify',
     'cssmin'
   ]);
 
@@ -130,7 +131,7 @@ module.exports = function(grunt) {
     }
   });
 
-  // TODO Don't call the uglify in build
+  // TODO Don't call the uglify in development build 
   grunt.registerTask('heroku:development', 'build');
 
   grunt.registerTask('heroku:production', 'build');
