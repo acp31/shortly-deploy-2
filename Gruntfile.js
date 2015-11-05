@@ -131,9 +131,15 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('deploy', [
+  // TODO Don't call the uglify in build
+  grunt.registerTask('heroku:development', 'build');
+
+  grunt.registerTask('heroku:production', 'build');
+
+  grunt.registerTask('deploy',
+    'build'
     // add your deploy tasks here
-  ]);
+  );
 
 
 };
